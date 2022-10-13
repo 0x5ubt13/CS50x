@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                let correct = document.querySelector('.correct');
+                let incorrects = document.querySelectorAll('.incorrect');
+                let input = document.querySelector('input');
+
+                correct.addEventListener('click', function() {
+                    correct.style.backgroundColor = '#00ff00';
+                    document.querySelector('#feedback1').innerHTML = "Correct!!"
+                });
+
+                for (let i = 0; i < incorrects.length; i++) {
+                    incorrects[i].addEventListener('click', function() {
+                        incorrects[i].style.backgroundColor = 'red';
+                        document.querySelector('#feedback1').innerHTML = 'Incorrect';
+                    });
+                }
+                
+                document.querySelector('#checkAnswer').addEventListener('click', function() {
+                    if (input.value === 'Mancha') {
+                        document.querySelector('#feedback2').innerHTML = 'Correct';
+                        input.style.backgroundColor = '#00ff00';
+                    } else {
+                        document.querySelector('#feedback2').innerHTML = 'Incorrect';
+                        input.style.backgroundColor = 'red';
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>Which of the following is the most populated city of Asturias, Spain?</h3>
+                <button class="incorrect">Oviedo</button>
+                <button class="correct">Gijon</button>
+                <button class="incorrect">Aviles</button>
+                <div>
+                    <p id="feedback1"></h3>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>Complete the sentence: Don Quijote de La...</h3>
+
+                <input type="text"></input>
+                <button id="checkAnswer">Submit answer</button>
+                <p id="feedback2"></p>
+            </div>
+        </div>
+    </body>
+</html>
