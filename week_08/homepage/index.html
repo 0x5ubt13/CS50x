@@ -6,8 +6,79 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <link href="styles.css" rel="stylesheet">
         <title>My Webpage</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                let correct = document.querySelector('.correct');
+                let incorrects = document.querySelectorAll('.incorrect');
+                let input = document.querySelector('input');
+
+                correct.addEventListener('click', function() {
+                    correct.style.backgroundColor = '#00ff00';
+                    document.querySelector('#feedback1').innerHTML = "Correct!!";
+                    document.querySelector('#feedback3').innerHTML = "Great!!";
+                });
+
+                for (let i = 0; i < incorrects.length; i++) {
+                    incorrects[i].addEventListener('click', function() {
+                        incorrects[i].style.backgroundColor = 'red';
+                        document.querySelector('#feedback1').innerHTML = 'Incorrect';
+                        document.querySelector('#feedback1').innerHTML = "Aaaawwww"
+                    });
+                }
+                
+                document.querySelector('#checkAnswer').addEventListener('click', function() {
+                    if (input.value === 'Mancha') {
+                        document.querySelector('#feedback2').innerHTML = 'Correct';
+                        input.style.backgroundColor = '#00ff00';
+                    } else {
+                        document.querySelector('#feedback2').innerHTML = 'Incorrect';
+                        input.style.backgroundColor = 'red';
+                    }
+                });
+            });
+        </script>
     </head>
     <body>
-        hello, homepage
+        <div class="header">
+            <h1>Trivia time!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>Which of the following is the most populated city of Asturias, Spain?</h3>
+                <button class="incorrect">Oviedo</button>
+                <button class="correct">Gijon</button>
+                <button class="incorrect">Aviles</button>
+                <div>
+                    <p id="feedback1"></h3>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>Complete the sentence: Don Quijote de La...</h3>
+
+                <input type="text"></input>
+                <button id="checkAnswer">Submit answer</button>
+                <p id="feedback2"></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 3: Feedback</h2>
+                <hr>
+                <h3>Did you like this homepage?</h3>
+
+                <button class="incorrect">No</button>
+                <button class="correct">Yes</button>
+                
+                <div>
+                    <p id="feedback3"></h3>
+                </div>
+            </div>
+        </div>
     </body>
 </html>
+
